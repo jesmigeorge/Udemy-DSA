@@ -27,16 +27,19 @@ class doublyLinkedList:
             print("The node cannot be inserted")
         else:
             newNode = Node(nodeValue)
+            # location = 0 means inserting the first element of DLL
             if location==0:
                 newNode.next = self.head
                 newNode.prev = None
                 self.head.prev = newNode
                 self.head = newNode
+            # location = 1 means inserting as the last element of DLL
             elif location==1:
                 newNode.next = None
                 newNode.prev = self.tail
                 self.tail.next = newNode
                 self.tail = newNode
+            # location = 1 means inserting as the last element of DLL
             else:
                 tempNode = self.head
                 index=1
@@ -85,6 +88,7 @@ class doublyLinkedList:
         if self.head is None:
             print("The list is empty for deletion")
         else:
+            # location = 0 means deleting the first element of DLL
             if location==0:
                 if self.head == self.tail:
                     self.head = None
@@ -92,6 +96,7 @@ class doublyLinkedList:
                 else:
                     self.head = self.head.next
                     self.head.prev = None
+            # location = 1 means deleting the last element of DLL
             elif location==1:
                 if self.head == self.tail:
                     self.head = None
@@ -99,6 +104,7 @@ class doublyLinkedList:
                 else:
                     self.tail = self.tail.prev
                     self.tail.next = None
+            # location = 1 means deleting the last element of DLL
             else:
                 curNode = self.head
                 index = 1
@@ -107,6 +113,17 @@ class doublyLinkedList:
                     index+=1
                 curNode.next = curNode.next.next
                 curNode.next.prev = curNode 
+    
+    def deleteDLL(self):
+        if self.head is None:
+            print("DLL is empty")
+        else:
+            temp = self.head
+            while temp:
+                temp.prev = None
+                temp = temp.next
+            self.head = None
+            self.tail = None
                        
         
 dlst = doublyLinkedList()
@@ -134,4 +151,8 @@ dlst.deleteNode(0)
 dlst.deleteNode(1)
 print([node.value for node in dlst])
 dlst.deleteNode(2)
+print([node.value for node in dlst])
+
+#to delete entire DLL
+dlst.deleteDLL()
 print([node.value for node in dlst])
