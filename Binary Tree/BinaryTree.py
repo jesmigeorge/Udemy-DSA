@@ -38,7 +38,7 @@ def postOrderTraversal(rootNode):
     #space complexity = O(n)
     #time complexity = O(n)
     
-def levelOrderTraversal(rootNode):
+def levelOrderTraversal(rootNode): # same as bfs in graph
     if not rootNode:
         return 
     else:
